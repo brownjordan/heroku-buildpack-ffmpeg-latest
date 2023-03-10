@@ -18,11 +18,13 @@ output() {
 }
 
 export_env_dir() {
+  echo "Exporting env dir" | output
   env_dir=$1
   acceptlist_regex=${2:-'^(FFMPEG_DOWNLOAD_URL)$'}
   denylist_regex=${3:-'^(PATH|GIT_DIR|CPATH|CPPATH|LD_PRELOAD|LIBRARY_PATH)$'}
   if [ -d "$env_dir" ]; then
     for e in $(ls $env_dir); do
+      echo "file is $e" | output
       echo "$e" | grep -E "$acceptlist_regex" | grep -qvE "$denylist_regex" &&
       export "$e=$(cat $env_dir/$e)"
       :

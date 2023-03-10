@@ -35,6 +35,8 @@ export_env_dir() {
 header "Installing ffmpeg"
 
 BUILD_DIR=${1:-}
+CACHE_DIR=$2
+ENV_DIR=$3
 VENDOR_DIR="vendor"
 FFMPEG_ARCHIVE_NAME="ffmpeg.tar.xz"
 
